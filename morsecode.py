@@ -58,7 +58,7 @@ def is_help_command(user_input: str) -> bool:
     # ==================================
 
 
-def is_validated_english_sentence(user_input):
+def is_validated_english_sentence(user_input: str) -> bool:
     """
     Input:
         - user_input : 문자열값으로 사용자가 입력하는 문자
@@ -84,9 +84,12 @@ def is_validated_english_sentence(user_input):
     """
     # ===Modify codes below=============
     # 조건에 따라 변환되어야 할 결과를 result 변수에 할당 또는 필요에 따라 자유로운 수정
-    result = None
+    if re.match("[0-9_@#$%^&*()-+=[]{}\"';:\|`~]", user_input):
+        return False
 
-    return result
+    cleaned_str = get_cleaned_english_sentence(user_input)
+
+    return bool(re.match("[a-zA-Z]", cleaned_str))
     # ==================================
 
 
