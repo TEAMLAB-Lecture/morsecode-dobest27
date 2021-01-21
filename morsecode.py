@@ -153,7 +153,7 @@ def get_cleaned_english_sentence(raw_english_sentence: str) -> str:
     # ==================================
 
 
-def decoding_character(morse_character):
+def decoding_character(morse_character: str) -> str:
     """
     Input:
         - morse_character : 문자열값으로 get_morse_code_dict 함수로 알파벳으로 치환이 가능한 값의 입력이 보장됨
@@ -177,9 +177,9 @@ def decoding_character(morse_character):
     # ===Modify codes below=============
     # 조건에 따라 변환되어야 할 결과를 result 변수에 할당 또는 필요에 따라 자유로운 수정
     morse_code_dict = get_morse_code_dict()
-    result = None
+    alpha_dict = {v: k for k, v in morse_code_dict.items()}
 
-    return result
+    return alpha_dict[morse_character]
     # ==================================
 
 
