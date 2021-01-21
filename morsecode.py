@@ -1,7 +1,10 @@
 # -*- coding: utf8 -*-
 
+import re
 
 # Help Function - 수정하지 말 것
+
+
 def get_morse_code_dict():
     morse_code = {
         "A": ".-", "N": "-.", "B": "-...", "O": "---", "C": "-.-.", "P": ".--.", "D": "-..", "Q": "--.-", "E": ".",
@@ -93,7 +96,7 @@ def is_validated_english_sentence(user_input: str) -> bool:
     # ==================================
 
 
-def is_validated_morse_code(user_input):
+def is_validated_morse_code(user_input: str) -> bool:
     """
     Input:
         - user_input : 문자열값으로 사용자가 입력하는 문자
@@ -117,10 +120,12 @@ def is_validated_morse_code(user_input):
         False
     """
     # ===Modify codes below=============
-    # 조건에 따라 변환되어야 할 결과를 result 변수에 할당 또는 필요에 따라 자유로운 수정
-    result = None
+    if re.match("[^-. ]", user_input):
+        return False
 
-    return result
+    morses = get_morse_code_dict().values()
+
+    return all([code in morses for code in user_input.split()])
     # ==================================
 
 
@@ -263,11 +268,10 @@ def main():
     print("Morse Code Program!!")
     # ===Modify codes below=============
 
-
-
     # ==================================
     print("Good Bye")
     print("Morse Code Program Finished!!")
+
 
 if __name__ == "__main__":
     main()
