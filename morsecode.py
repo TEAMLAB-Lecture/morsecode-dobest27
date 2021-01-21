@@ -183,7 +183,7 @@ def decoding_character(morse_character: str) -> str:
     # ==================================
 
 
-def encoding_character(english_character):
+def encoding_character(english_character: str) -> str:
     """
     Input:
         - english_character : 문자열값으로 알파벳 한 글자의 입력이 보장됨
@@ -207,9 +207,8 @@ def encoding_character(english_character):
     # ===Modify codes below=============
     # 조건에 따라 변환되어야 할 결과를 result 변수에 할당 또는 필요에 따라 자유로운 수정
     morse_code_dict = get_morse_code_dict()
-    result = None
 
-    return result
+    return morse_code_dict[encoding_character]
     # ==================================
 
 
