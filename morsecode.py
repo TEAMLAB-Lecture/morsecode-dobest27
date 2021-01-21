@@ -87,12 +87,13 @@ def is_validated_english_sentence(user_input: str) -> bool:
     """
     # ===Modify codes below=============
     # 조건에 따라 변환되어야 할 결과를 result 변수에 할당 또는 필요에 따라 자유로운 수정
-    if re.match("[0-9_@#$%^&*()-+=[]{}\"';:\|`~]", user_input):
+    p = re.compile(r'[0-9_@#$%^&*()\-+=\[\]{}\"\';:\|`~]')
+    if p.search(user_input):
         return False
 
     cleaned_str = get_cleaned_english_sentence(user_input)
 
-    return bool(re.match("[a-zA-Z]", cleaned_str))
+    return bool(re.search("[a-zA-Z]", cleaned_str))
     # ==================================
 
 
@@ -120,7 +121,7 @@ def is_validated_morse_code(user_input: str) -> bool:
         False
     """
     # ===Modify codes below=============
-    if re.match("[^-. ]", user_input):
+    if re.search("[^-. ]", user_input):
         return False
 
     morses = get_morse_code_dict().values()
