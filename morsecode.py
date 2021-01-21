@@ -240,7 +240,7 @@ def decoding_sentence(morse_sentence: str) -> str:
     # ==================================
 
 
-def encoding_sentence(english_sentence):
+def encoding_sentence(english_sentence: str) -> str:
     """
     Input:
         - english_sentence : 문자열 값으로 모스 부호로 변환이 가능한 영어문장
@@ -260,9 +260,14 @@ def encoding_sentence(english_sentence):
     """
     # ===Modify codes below=============
     # 조건에 따라 변환되어야 할 결과를 result 변수에 할당 또는 필요에 따라 자유로운 수정
-    result = None
+    sentence = get_cleaned_english_sentence(english_sentence).upper()
+    result = ""
+    for word in sentence.split():
+        for char in word:
+            result += encoding_character(char) + " "
+        result += " "
 
-    return result
+    return result.strip()
     # ==================================
 
 
