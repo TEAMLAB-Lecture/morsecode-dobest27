@@ -212,7 +212,7 @@ def encoding_character(english_character: str) -> str:
     # ==================================
 
 
-def decoding_sentence(morse_sentence):
+def decoding_sentence(morse_sentence: str) -> str:
     """
     Input:
         - morse_sentence : 문자열 값으로 모스 부호를 표현하는 문자열
@@ -230,10 +230,13 @@ def decoding_sentence(morse_sentence):
         'YOU ARE F'
     """
     # ===Modify codes below=============
-    # 조건에 따라 변환되어야 할 결과를 result 변수에 할당 또는 필요에 따라 자유로운 수정
-    result = None
+    result = ""
+    for word in morse_sentence.strip().split("  "):
+        for c in word.split():
+            result += decoding_character(c)
+        result += " "
 
-    return result
+    return result.strip()
     # ==================================
 
 
